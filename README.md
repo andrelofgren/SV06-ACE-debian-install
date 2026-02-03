@@ -1,2 +1,2 @@
 # SV06-ACE-debian-install
-A collection of scripts for setting up a fresh Debian installation on Sovol SV06 ACE printers
+This repository contains a collection of scripts for creating a fresh Debian installation for Sovol SV06 ACE printers.
