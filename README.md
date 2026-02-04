@@ -76,3 +76,5 @@ In summary performing the following post-installation steps should get you a wor
 3) Install Moonraker and Mainsail: run ```./kiah/kiauh.sh``` on printer
 4) Enable screen UI: run ```sudo systemctl enable makerbase-client``` on printer
 5) Reboot printer
+
+For general system configuration install the [Armbian configuration utility](https://docs.armbian.com/User-Guide_Armbian-Config).
