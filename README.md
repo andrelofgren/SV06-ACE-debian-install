@@ -1,10 +1,8 @@
 # SV06 ACE Debian Install
-This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image.
-
-The scripts has so far only been tested on an SV06 Plus ACE from a host running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), an [Ubuntu LTS](https://ubuntu.com/download/desktop) based OS.
+This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image. The scripts have so far only been tested on an SV06 Plus ACE from a host running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), an [Ubuntu LTS](https://ubuntu.com/download/desktop) based OS.
 
 ## WARNING
-Flashing your device with custom firmware carries the risk of bricking your device, and will most likely void you of your warranty. Ensure you have read through the script thoroughly before running them as I take zero responsibility for what these scripts might do to your system.
+Flashing your device with custom firmware carries the risk of bricking it, and will most likely void you of your warranty. Ensure you have read through the script thoroughly before running them as I take zero responsibility for what these scripts might do to your system.
 
 ## Installing the base system
 Begin by downloading the official update image to your SV06 ACE printer by running
@@ -46,14 +44,13 @@ In case you are unable to access it via ssh, it is also possible to access the p
 ```console
 adb shell /bin/bash
 ```
+From here you can configure networking and SSH.
 
-Once SSH is working, [Klipper](https://www.klipper3d.org) can be installed by running on the host:
+Once SSH is working, [Klipper](https://www.klipper3d.org) can be installed by running the following script on the host:
 ```console
 ./install-klipper.sh ip-address-of-printer
 ``` 
-In essence, this script will clone the [Klipper](https://github.com/Klipper3d/klipper) on your printer, check out and install the branch corresponding to the Klipper version in the official Sovol update image, and lastly upload some Sovol specific Klipper files.
-
-After installing Klipper go ahead and ssh into printer and clone [KIAUH](https://github.com/dw-0/kiauh) to install some additional software:
+This script will clone the official [Klipper repo](https://github.com/Klipper3d/klipper) on your printer, check out and install the branch corresponding to the Klipper version in the official Sovol update image, and lastly upload some Sovol specific Klipper files. After installing Klipper go ahead and ssh into printer and clone [KIAUH](https://github.com/dw-0/kiauh) to install some additional software:
 ```console 
 git clone https://github.com/dw-0/kiauh
 ``` 
@@ -65,13 +62,20 @@ After installing Moonraker, enable the default Sovol UI for the screen:
 ```console
 sudo systemctl enable makerbase-client
 ```
-An alternative open source UI is [Guppy Screen](https://github.com/probielodan/guppyscreen); to install run:
+An alternative open source UI is [Guppy Screen](https://github.com/probielodan/guppyscreen); to install first upload it to printer
 ```console 
+scp install-guppyscreen.sh sovol@PRINTER_IP_ADDRESS:
+```
+and then execute it on the printer
+```console
 ./install-guppyscreen.sh
 ```
+
 It is also possible to install [KlipperScreen](), see [this](https://forum.sovol3d.com/t/klipperscreen-for-sovol-sv06-ace/9112) forum post for instructions.
 
-For camera functionality install [Crowsnest](https://github.com/mainsail-crew/crowsnest) using KIAUH. If you are interested in personalizing the boot screen see my other repo https://github.com/andrelofgren/SV06-ACE-Custom-Splash for instructions on how to do that.
+For camera functionality install [Crowsnest](https://github.com/mainsail-crew/crowsnest) using KIAUH.
+
+If you are interested in personalizing the boot splash see my other repo https://github.com/andrelofgren/SV06-ACE-Custom-Splash for instructions on how to do that.
 
 In summary performing the following post-installation steps should get you a working printer:
 1) Install Klipper: run ```./install-klipper.sh ip-address-of-printer``` on host
@@ -80,4 +84,4 @@ In summary performing the following post-installation steps should get you a wor
 4) Enable screen UI: run ```sudo systemctl enable makerbase-client``` on printer
 5) Reboot printer
 
-For general system configuration install the [Armbian configuration utility](https://docs.armbian.com/User-Guide_Armbian-Config) by following these [instructions](https://docs.armbian.com/User-Guide_Armbian-Config/#installation-on-3rd-party-linux-oA).
+For general system configuration you may want to install the [Armbian configuration utility](https://docs.armbian.com/User-Guide_Armbian-Config) by following these [instructions](https://docs.armbian.com/User-Guide_Armbian-Config/#installation-on-3rd-party-linux-oA).
