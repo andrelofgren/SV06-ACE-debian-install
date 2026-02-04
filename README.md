@@ -66,6 +66,7 @@ An alternative open source UI is [Guppy Screen](https://github.com/probielodan/g
 ```console 
 ./install-guppyscreen.sh
 ```
+It is also possible to install [KlipperScreen](), see [this](https://forum.sovol3d.com/t/klipperscreen-for-sovol-sv06-ace/9112) forum post for instructions.
 
 For camera functionality install [Crowsnest](https://github.com/mainsail-crew/crowsnest) using KIAUH. If you are interested in personalizing the boot screen see my other repo https://github.com/andrelofgren/SV06-ACE-Custom-Splash for instructions on how to do that.
 
