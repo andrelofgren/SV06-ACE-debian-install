@@ -1,7 +1,7 @@
 # SV06 ACE Debian Install
 This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image.
 
-The scripts has been tested on a host system running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), based on [Ubuntu LTS](https://ubuntu.com/download/desktop).
+The scripts has been tested for SV06 Plus ACE and on a host system running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), based on [Ubuntu LTS](https://ubuntu.com/download/desktop).
 
 ## WARNING
 Flashing your device with custom firmware carries the risk of bricking your device, and will most likely void you of your warranty. Ensure you have read through the program thoroughly before running and flashing as I take zero responsibility for what these scripts might do to your system.
