@@ -74,3 +74,5 @@ In summary performing the following post-installation steps should get you a wor
 1) Install Klipper: run ```./install-klipper.sh ip-address-of-printer``` on host
 2) Clone KIAUH: run ```git clone https://github.com/dw-0/kiauh``` on printer
 3) Install Moonraker and Mainsail: run ```./kiah/kiauh.sh``` on printer
+4) Enable screen UI: run ```sudo systemctl enable makerbase-client``` on printer
+5) Reboot printer
