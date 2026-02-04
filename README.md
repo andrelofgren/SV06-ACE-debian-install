@@ -1,5 +1,4 @@
-# SV06-ACE-debian-install
-## About
+# SV06 ACE Debian Install
 This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is coming from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image.
 
 ## Installing
