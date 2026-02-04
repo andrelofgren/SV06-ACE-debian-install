@@ -3,6 +3,9 @@ This repository contains a collection of scripts for creating a fresh debian upd
 
 The scripts has been tested on a host system running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), based on [Ubuntu LTS](https://ubuntu.com/download/desktop).
 
+## WARNING
+Flashing your device with custom firmware carries the risk of bricking your device, and will most likely void you of your warranty. Ensure you have read through the program thoroughly before running and flashing as I take zero responsibility for what these scripts might do to your system.
+
 ## Installation of Debian base
 Begin by downloading the official update image to your SV06 ACE printer by running
 ```console 
