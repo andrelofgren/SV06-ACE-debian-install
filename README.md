@@ -62,7 +62,7 @@ After installing Moonraker, enable the default Sovol UI for the screen:
 ```console
 sudo systemctl enable makerbase-client
 ```
-An alternative open source UI is [Guppy Screen](https://github.com/probielodan/guppyscreen); to install first upload it to printer
+An alternative open source UI is [Guppy Screen](https://github.com/probielodan/guppyscreen); to install first upload ```install-guppyscreen.sh``` to printer
 ```console 
 scp install-guppyscreen.sh sovol@PRINTER_IP_ADDRESS:
 ```
