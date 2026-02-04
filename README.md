@@ -6,7 +6,7 @@ The scripts has so far only been tested on an SV06 Plus ACE from a host running 
 ## WARNING
 Flashing your device with custom firmware carries the risk of bricking your device, and will most likely void you of your warranty. Ensure you have read through the script thoroughly before running them as I take zero responsibility for what these scripts might do to your system.
 
-## Installation of Debian base
+## Installing the base system
 Begin by downloading the official update image to your SV06 ACE printer by running
 ```console 
 ./download-update-img.sh
