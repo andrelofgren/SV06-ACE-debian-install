@@ -1,7 +1,9 @@
 # SV06 ACE Debian Install
-This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is coming from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image.
+This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image.
 
-## Installing
+The scripts has been tested on a host system running the latest version of [Tuxedo](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo) OS, which based on the latest [Ubuntu](https://ubuntu.com/) LTS.
+
+## Installation of Debian base
 Begin by downloading the official update image to your SV06 ACE printer by running
 ```console 
 ./download-update-img.sh
@@ -12,21 +14,15 @@ Once the download has finished, unpack it:
 ```console 
 ./unpack-update-img.sh path-to-update-image
 ```
-This will separate the rootfs from the kernel and the bootloader, ensuring these are not modified.
-
-We will now wipe the rootfs completely and debootstrap Debian onto it:
+This will separate the rootfs from the kernel and the bootloader, ensuring the latter are not modified. We will now wipe the rootfs completely and debootstrap Debian onto it:
 ```console
 WIFI_SSID=my-wifi-ssid WIFI_PASSWORD=my-wifi-password ./bootstrap-debian.sh
 ```
-In addition to setting up a base installation, the install script will also download some additional packages and enable some services; see the script for details - I invite you to modify it as you see fit!
-
-After the installation has finished, repackage the image:
+In addition to setting up a base installation, the install script will also download some additional packages and enable some system services; see the script for details - I invite you to modify it as you see fit! Once the installation has finished, repackage the image:
 ```console
 ./pack-update-img.sh
 ``` 
-This will produce an update image ready to be flashed onto your printer.
-
-For instruction on how to flash using Windows see the [official instructions](https://wiki.sovol3d.com/en/SV06-ACE-image-flashing-tutorial and https://forum.sovol3d.com/t/linux-board-flashing-tool-for-sv06-ace/8076), for Linux see [this](https://forum.sovol3d.com/t/linux-board-flashing-tool-for-sv06-ace/8076/4) forum post.
+This will produce an update image ready to be flashed onto your printer. For instruction on how to flash using Windows see the [official instructions](https://wiki.sovol3d.com/en/SV06-ACE-image-flashing-tutorial), for Linux see [this](https://forum.sovol3d.com/t/linux-board-flashing-tool-for-sv06-ace/8076/4) forum post.
 
 In summary the installation steps are as follows:
 1) Download the official SV06 update image: ```./download-update-img.sh```
@@ -48,25 +44,30 @@ In case you are unable to access it via ssh, it is also possible to access the p
 adb shell /bin/bash
 ```
 
-Once you have flashed the fresh update image and booted up the printer, Klipper can be installed by running on the host:
+Once SSH is working, [Klipper](https://www.klipper3d.org) can be installed by running on the host:
 ```console
 ./install-klipper.sh ip-address-of-printer
 ``` 
-In essence, this script will clone [Klipper](https://github.com/Klipper3d/klipper) on your printer, check out and install the branch corresponding to the Klipper version in the official Sovol update image, and lastly upload some Sovol specific Klipper files.
+In essence, this script will clone the [Klipper](https://github.com/Klipper3d/klipper) on your printer, check out and install the branch corresponding to the Klipper version in the official Sovol update image, and lastly upload some Sovol specific Klipper files.
 
-After installing Klipper go ahead and clone [KIAUH](https://github.com/dw-0/kiauh) on the printer to install some additional software:
+After installing Klipper go ahead and ssh into printer and clone [KIAUH](https://github.com/dw-0/kiauh) to install some additional software:
 ```console 
 git clone https://github.com/dw-0/kiauh
 ``` 
-Now run KIAUH and install Moonraker and Mainsail (for the web UI):
+Now run KIAUH (on printer) and follow instructions to install Moonraker and Mainsail (for the web UI):
 ```console
 ./kiauh/kiauh.sh
 ```
-After installing Moonraker, enable the default Sovol UI:
+After installing Moonraker, enable the default Sovol UI for the screen:
 ```console
 sudo systemctl enable makerbase-client
 ```
-An alternative Screen UI is Guppy Screen, which can be installed by running ```./install-guppyscreen.sh``` on the printer. For camera functionality install Crowsnest using KIAUH. If you are interested in personalizing the boot screen see my other repo https://github.com/andrelofgren/SV06-ACE-Custom-Splash for instructions on how to do that.
+An alternative open source UI is [Guppy Screen](https://github.com/probielodan/guppyscreen); to install run:
+```console 
+./install-guppyscreen.sh
+```
+
+For camera functionality install [Crowsnest](https://github.com/mainsail-crew/crowsnest) using KIAUH. If you are interested in personalizing the boot screen see my other repo https://github.com/andrelofgren/SV06-ACE-Custom-Splash for instructions on how to do that.
 
 In summary performing the following post-installation steps should get you a working printer:
 1) Install Klipper: run ```./install-klipper.sh ip-address-of-printer``` on host
