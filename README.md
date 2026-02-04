@@ -77,4 +77,4 @@ In summary performing the following post-installation steps should get you a wor
 4) Enable screen UI: run ```sudo systemctl enable makerbase-client``` on printer
 5) Reboot printer
 
-For general system configuration install the [Armbian configuration utility](https://docs.armbian.com/User-Guide_Armbian-Config).
+For general system configuration install the [Armbian configuration utility](https://docs.armbian.com/User-Guide_Armbian-Config) by following these [instructions](https://docs.armbian.com/User-Guide_Armbian-Config/#installation-on-3rd-party-linux-oA).
