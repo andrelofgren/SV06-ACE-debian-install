@@ -1,17 +1,17 @@
 # SV06 ACE Debian Install
 This repository contains a collection of scripts for creating a fresh debian update image for Sovol SV06 ACE printers. One of the many benefits of running a custom install is that you can be sure that all software is from official sources. It will also have a smaller footprint, requiring only about half the amount of storage compared to the official image.
 
-The scripts has been tested for SV06 Plus ACE and on a host system running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), based on [Ubuntu LTS](https://ubuntu.com/download/desktop).
+The scripts has so far only been tested on an SV06 Plus ACE from a host running the latest version of [Tuxedo OS](https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo), an [Ubuntu LTS](https://ubuntu.com/download/desktop) based OS.
 
 ## WARNING
-Flashing your device with custom firmware carries the risk of bricking your device, and will most likely void you of your warranty. Ensure you have read through the program thoroughly before running and flashing as I take zero responsibility for what these scripts might do to your system.
+Flashing your device with custom firmware carries the risk of bricking your device, and will most likely void you of your warranty. Ensure you have read through the script thoroughly before running them as I take zero responsibility for what these scripts might do to your system.
 
 ## Installation of Debian base
 Begin by downloading the official update image to your SV06 ACE printer by running
 ```console 
 ./download-update-img.sh
 ``` 
-You may also grab the image for your printer manually from [SV06 ACE](https://drive.google.com/drive/folders/1bf8k1qVO31uq0BIBq4jQVR3mAjd2UuXu?usp=sharing) [SV06 Plus ACE](https://drive.google.com/drive/folders/1sEsbBmP2eZxc8P9HHxHdBsMY07VvtDGa?usp=sharing).
+You may also grab the image for your printer manually from here: [SV06 ACE](https://drive.google.com/drive/folders/1bf8k1qVO31uq0BIBq4jQVR3mAjd2UuXu?usp=sharing) [SV06 Plus ACE](https://drive.google.com/drive/folders/1sEsbBmP2eZxc8P9HHxHdBsMY07VvtDGa?usp=sharing).
 
 Once the download has finished, unpack it:
 ```console 
